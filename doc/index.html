@@ -1,0 +1,480 @@
+<html>
+<head>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<meta charset='utf-8' />
+	
+	<title>CHAUFFAGE : Chambre Léa</title>
+	<link rel='icon' type='image/png' sizes='16x16' href='https://nsa40.casimages.com/img/2021/06/30/210630124232336680.jpg'>
+	<link rel='apple-touch-icon' type='image/png' sizes='16x16' href='https://nsa40.casimages.com/img/2021/06/30/210630124232336680.jpg'>
+	
+	
+	<style type='text/css'>
+	
+	html, body {
+	width: 100%;
+	}
+	
+	<!-- ID -->
+	
+	#title {
+	font-family: Calibri;
+	color: white;
+	font-size: 150%;
+	font-weight: bold;
+	text-transform: uppercase;
+	}
+
+	#tab_planning {
+	border-collapse: collapse
+	}
+	
+	<!-- CLASS -->
+	
+	.cells_planning {
+	border: 0px solid black;
+	font-weight: bold;
+	text-align: center
+	}
+	
+	.prog {
+	border: 1px solid black;
+
+	}
+	
+	.fix {
+	width: 20px;
+	}
+	
+	.legend_text {
+	font-size: 65%;
+	}
+	
+	.legend_color {
+	font-size: 65%;
+	border: 1px solid black;
+	}
+
+	.div_title {
+	margin-left: 1px; 
+	margin-right: 1px;
+	margin-top: 1px; 
+	height: 70px;
+	background-color: #2196F3;
+	vertical-align:middle;
+	}
+	
+	.div_title span{
+	vertical-align:middle;
+	display: table-cell;
+	text-align: center;
+	font-family: Calibri;
+	color: white;
+	font-size: 150%;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding-top: 30px;
+	padding-left: 5px;
+	}
+	
+	.div_encadrement {
+	margin-left: 1px; 
+	margin-right: 5px;
+	margin-top: 1px;
+	
+	border: 2px solid #333;
+	box-shadow: 3px 3px 1px #444;
+	padding: 8px 12px;
+	background-color: #7b38d8);
+	}	
+	
+	.div_planning {
+	overflow: auto;
+	}
+	
+	.switch-field {
+	display: flex;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: auto; 
+	margin-right: auto;
+	overflow: hidden;
+	}
+
+	.switch-field input {
+	position: absolute !important;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	width: 1px;
+	border: 0;
+	overflow: hidden;
+	}
+
+	.switch-field label {
+	background-color: #ffffff;
+	color: black;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 1;
+	text-align: center;
+	padding: 8px 16px;
+	margin-right: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+	transition: all 0.1s ease-in-out;
+	}
+	
+	.switch-field input:checked + label {
+	background-color: #2196F3;
+	color: white;
+	font-weight: bold;
+	box-shadow: none;
+	}
+	
+	.switch-field label:first-of-type {
+	border-radius: 0px 0 0 0px;
+	}
+
+	.switch-field label:last-of-type {
+	border-radius: 0 0px 0px 0;
+	}
+	
+
+	
+	input {
+	background-color: #2196F3;
+	border-radius: 0px;
+	border: 0px;
+	color: #FFFF;
+	text-align: center;
+	font-weight: bold;
+	padding: 6px 20px;
+	margin: 2px 5px;
+	cursor: pointer;
+	text-transform: uppercase;
+	position: relative;
+	}
+
+
+	</style>
+</head>
+
+<body>
+
+<div class='div_title'>
+	<span id='title'>Chauffage connecté</span>
+</div>
+
+<p> </p>
+
+<div class='div_encadrement'>
+		
+	<div class='switch-field'>
+		<input type='radio' id='mode_off' name='mode_select' value='off' />
+		<label for='mode_off'>OFF</label>
+		<input type='radio' id='mode_on' name='mode_select' value='on' />
+		<label for='mode_on'>ON</label>
+		<input type='radio' id='mode_auto' name='mode_select' value='auto' />
+		<label for='mode_auto'>AUTO</label>
+	</div>
+
+	<div class='div_planning'>
+		<table id='tab_planning'>
+			<tr class='cells_planning'>
+				<td class='fix'></td>
+				<td id='tab'>00</td><td id='tab'>01</td><td id='tab'>02</td><td id='tab'>03</td><td id='tab'>04</td><td id='tab'>05</td><td id='tab'>06</td><td id='tab'>07</td><td id='tab'>08</td><td id='tab'>09</td><td id='tab'>10</td><td id='tab'>11</td>
+				<td id='tab'>12</td><td id='tab'>13</td><td id='tab'>14</td><td id='tab'>15</td><td id='tab'>16</td><td id='tab'>17</td><td id='tab'>18</td><td id='tab'>19</td><td id='tab'>20</td><td id='tab'>21</td><td id='tab'>22</td><td id='tab'>23</td>
+			<tr/>
+			
+			<tr class='cells_planning'>
+				<td class='fix'>L</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(0);' bgColor ='#FFFFFF' id='0'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(1);' bgColor ='#FFFFFF' id='1'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(2);' bgColor ='#FFFFFF' id='2'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(3);' bgColor ='#FFFFFF' id='3'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(4);' bgColor ='#FFFFFF' id='4'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(5);' bgColor ='#FFFFFF' id='5'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(6);' bgColor ='#FFFFFF' id='6'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(7);' bgColor ='#FFFFFF' id='7'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(8);' bgColor ='#FFFFFF' id='8'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(9);' bgColor ='#FFFFFF' id='9'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(10);' bgColor ='#FFFFFF' id='10'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(11);' bgColor ='#FFFFFF' id='11'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(12);' bgColor ='#FFFFFF' id='12'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(13);' bgColor ='#FFFFFF' id='13'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(14);' bgColor ='#FFFFFF' id='14'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(15);' bgColor ='#FFFFFF' id='15'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(16);' bgColor ='#FFFFFF' id='16'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(17);' bgColor ='#FFFFFF' id='17'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(18);' bgColor ='#FFFFFF' id='18'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(19);' bgColor ='#FFFFFF' id='19'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(20);' bgColor ='#FFFFFF' id='20'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(21);' bgColor ='#FFFFFF' id='21'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(22);' bgColor ='#FFFFFF' id='22'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(23);' bgColor ='#FFFFFF' id='23'>00</td>
+			</tr>
+			<tr class='cells_planning'>
+				<td class='fix'>M</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(24);' bgColor ='#FFFFFF' id='24'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(25);' bgColor ='#FFFFFF' id='25'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(26);' bgColor ='#FFFFFF' id='26'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(27);' bgColor ='#FFFFFF' id='27'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(28);' bgColor ='#FFFFFF' id='28'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(29);' bgColor ='#FFFFFF' id='29'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(30);' bgColor ='#FFFFFF' id='30'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(31);' bgColor ='#FFFFFF' id='31'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(32);' bgColor ='#FFFFFF' id='32'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(33);' bgColor ='#FFFFFF' id='33'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(34);' bgColor ='#FFFFFF' id='34'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(35);' bgColor ='#FFFFFF' id='35'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(36);' bgColor ='#FFFFFF' id='36'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(37);' bgColor ='#FFFFFF' id='37'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(38);' bgColor ='#FFFFFF' id='38'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(39);' bgColor ='#FFFFFF' id='39'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(40);' bgColor ='#FFFFFF' id='40'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(41);' bgColor ='#FFFFFF' id='41'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(42);' bgColor ='#FFFFFF' id='42'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(43);' bgColor ='#FFFFFF' id='43'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(44);' bgColor ='#FFFFFF' id='44'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(45);' bgColor ='#FFFFFF' id='45'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(46);' bgColor ='#FFFFFF' id='46'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(47);' bgColor ='#FFFFFF' id='47'>00</td>
+			</tr>
+			<tr class='cells_planning'>
+				<td class='fix'>M</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(48);' bgColor ='#FFFFFF' id='48'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(49);' bgColor ='#FFFFFF' id='49'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(50);' bgColor ='#FFFFFF' id='50'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(51);' bgColor ='#FFFFFF' id='51'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(52);' bgColor ='#FFFFFF' id='52'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(53);' bgColor ='#FFFFFF' id='53'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(54);' bgColor ='#FFFFFF' id='54'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(55);' bgColor ='#FFFFFF' id='55'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(56);' bgColor ='#FFFFFF' id='56'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(57);' bgColor ='#FFFFFF' id='57'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(58);' bgColor ='#FFFFFF' id='58'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(59);' bgColor ='#FFFFFF' id='59'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(60);' bgColor ='#FFFFFF' id='60'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(61);' bgColor ='#FFFFFF' id='61'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(62);' bgColor ='#FFFFFF' id='62'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(63);' bgColor ='#FFFFFF' id='63'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(64);' bgColor ='#FFFFFF' id='64'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(65);' bgColor ='#FFFFFF' id='65'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(66);' bgColor ='#FFFFFF' id='66'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(67);' bgColor ='#FFFFFF' id='67'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(68);' bgColor ='#FFFFFF' id='68'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(69);' bgColor ='#FFFFFF' id='69'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(70);' bgColor ='#FFFFFF' id='70'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(71);' bgColor ='#FFFFFF' id='71'>00</td>
+			</tr>
+			<tr class='cells_planning'>
+				<td class='fix'>J</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(72);' bgColor ='#FFFFFF' id='72'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(73);' bgColor ='#FFFFFF' id='73'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(74);' bgColor ='#FFFFFF' id='74'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(75);' bgColor ='#FFFFFF' id='75'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(76);' bgColor ='#FFFFFF' id='76'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(77);' bgColor ='#FFFFFF' id='77'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(78);' bgColor ='#FFFFFF' id='78'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(79);' bgColor ='#FFFFFF' id='79'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(80);' bgColor ='#FFFFFF' id='80'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(81);' bgColor ='#FFFFFF' id='81'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(82);' bgColor ='#FFFFFF' id='82'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(83);' bgColor ='#FFFFFF' id='83'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(84);' bgColor ='#FFFFFF' id='84'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(85);' bgColor ='#FFFFFF' id='85'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(86);' bgColor ='#FFFFFF' id='86'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(87);' bgColor ='#FFFFFF' id='87'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(88);' bgColor ='#FFFFFF' id='88'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(89);' bgColor ='#FFFFFF' id='89'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(90);' bgColor ='#FFFFFF' id='90'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(91);' bgColor ='#FFFFFF' id='91'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(92);' bgColor ='#FFFFFF' id='92'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(93);' bgColor ='#FFFFFF' id='93'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(94);' bgColor ='#FFFFFF' id='94'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(95);' bgColor ='#FFFFFF' id='95'>00</td>
+			</tr>
+			<tr class='cells_planning'>
+				<td class='fix'>V</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(96);' bgColor ='#FFFFFF' id='96'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(97);' bgColor ='#FFFFFF' id='97'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(98);' bgColor ='#FFFFFF' id='98'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(99);' bgColor ='#FFFFFF' id='99'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(100);' bgColor ='#FFFFFF' id='100'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(101);' bgColor ='#FFFFFF' id='101'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(102);' bgColor ='#FFFFFF' id='102'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(103);' bgColor ='#FFFFFF' id='103'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(104);' bgColor ='#FFFFFF' id='104'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(105);' bgColor ='#FFFFFF' id='105'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(106);' bgColor ='#FFFFFF' id='106'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(107);' bgColor ='#FFFFFF' id='107'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(108);' bgColor ='#FFFFFF' id='108'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(109);' bgColor ='#FFFFFF' id='109'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(110);' bgColor ='#FFFFFF' id='110'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(111);' bgColor ='#FFFFFF' id='111'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(112);' bgColor ='#FFFFFF' id='112'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(113);' bgColor ='#FFFFFF' id='113'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(114);' bgColor ='#FFFFFF' id='114'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(115);' bgColor ='#FFFFFF' id='115'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(116);' bgColor ='#FFFFFF' id='116'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(117);' bgColor ='#FFFFFF' id='117'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(118);' bgColor ='#FFFFFF' id='118'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(119);' bgColor ='#FFFFFF' id='119'>00</td>
+			</tr>
+			<tr class='cells_planning'>
+				<td class='fix'>S</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(120);' bgColor ='#FFFFFF' id='120'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(121);' bgColor ='#FFFFFF' id='121'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(122);' bgColor ='#FFFFFF' id='122'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(123);' bgColor ='#FFFFFF' id='123'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(124);' bgColor ='#FFFFFF' id='124'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(125);' bgColor ='#FFFFFF' id='125'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(126);' bgColor ='#FFFFFF' id='126'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(127);' bgColor ='#FFFFFF' id='127'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(128);' bgColor ='#FFFFFF' id='128'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(129);' bgColor ='#FFFFFF' id='129'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(130);' bgColor ='#FFFFFF' id='130'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(131);' bgColor ='#FFFFFF' id='131'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(132);' bgColor ='#FFFFFF' id='132'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(133);' bgColor ='#FFFFFF' id='133'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(134);' bgColor ='#FFFFFF' id='134'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(135);' bgColor ='#FFFFFF' id='135'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(136);' bgColor ='#FFFFFF' id='136'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(137);' bgColor ='#FFFFFF' id='137'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(138);' bgColor ='#FFFFFF' id='138'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(139);' bgColor ='#FFFFFF' id='139'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(140);' bgColor ='#FFFFFF' id='140'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(141);' bgColor ='#FFFFFF' id='141'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(142);' bgColor ='#FFFFFF' id='142'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(143);' bgColor ='#FFFFFF' id='143'>00</td>
+			</tr>
+			<tr class='cells_planning'>
+				<td class='fix'>D</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(144);' bgColor ='#FFFFFF' id='144'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(145);' bgColor ='#FFFFFF' id='145'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(146);' bgColor ='#FFFFFF' id='146'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(147);' bgColor ='#FFFFFF' id='147'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(148);' bgColor ='#FFFFFF' id='148'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(149);' bgColor ='#FFFFFF' id='149'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(150);' bgColor ='#FFFFFF' id='150'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(151);' bgColor ='#FFFFFF' id='151'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(152);' bgColor ='#FFFFFF' id='152'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(153);' bgColor ='#FFFFFF' id='153'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(154);' bgColor ='#FFFFFF' id='154'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(155);' bgColor ='#FFFFFF' id='155'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(156);' bgColor ='#FFFFFF' id='156'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(157);' bgColor ='#FFFFFF' id='157'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(158);' bgColor ='#FFFFFF' id='158'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(159);' bgColor ='#FFFFFF' id='159'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(160);' bgColor ='#FFFFFF' id='160'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(161);' bgColor ='#FFFFFF' id='161'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(162);' bgColor ='#FFFFFF' id='162'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(163);' bgColor ='#FFFFFF' id='163'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(164);' bgColor ='#FFFFFF' id='164'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(165);' bgColor ='#FFFFFF' id='165'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(166);' bgColor ='#FFFFFF' id='166'>00</td>
+				<td class='prog' style='color:rgba(1,1,1,0);' onclick='color(167);' bgColor ='#FFFFFF' id='167'>00</td>
+			</tr>
+
+		</table></br>
+	</div>
+	
+	<table id='tab_planning'>
+		<tr class='cells_planning'>
+			<td class='legend_color' style='color:rgba(1,1,1,0);' bgColor ='#FFFFFF'>00</td>
+			<td class='legend_text'> OFF</td>
+			<td></td>
+			<td class='legend_color' style='color:rgba(1,1,1,0);' bgColor ='#2196F3'>00</td>
+			<td class='legend_text'> ON</td>
+			<td></td>
+			<td class='legend_color' style='color:rgba(1,1,1,0);' bgColor ='#FFFF'>00</td>
+			<td class='legend_text'> ECO</td>
+		</tr>
+	</table></br>
+	
+	<input type='button' value='Valider' onclick='update_planning();'>
+	<input type="checkbox" id='save_data'><label>Sauvegarder</label>
+</div>
+
+
+<script type='text/javascript'>
+
+	function color(id_prog){
+	var colored = document.getElementById(id_prog).bgColor;
+	
+	<!-- #2196F3 : bleu / #FFFFFF : blanc / #16B84E : vert / #FFFF : jaune-->
+	
+	if (colored === '#FFFFFF'){
+		colored = '#2196F3';
+		}
+	else if (colored === '#2196F3'){
+		colored = '#FFFF';
+		}
+	else {
+		colored = '#FFFFFF';
+		}
+	document.getElementById(id_prog).bgColor = colored;
+	}
+
+	function update_mode(){
+	var mode = '?mode=';
+	var data;	
+
+	if (document.getElementById('mode_off').checked){
+		mode = mode + 'off';
+	}
+	else if (document.getElementById('mode_on').checked){
+		mode = mode + 'on';
+	}
+	else if (document.getElementById('mode_auto').checked){
+		mode = mode + 'auto';
+	}
+	
+	data = mode + '&random=' + Math.trunc(Math.random() * 1000000);
+	document.location.href = data;
+	
+	}	
+	
+	function update_planning(){
+	var mode = '?mode=';
+	var programmation = '?prog=';
+	var data;	
+
+	if (document.getElementById('mode_off').checked){
+		mode = mode + 'off';
+	}
+	else if (document.getElementById('mode_on').checked){
+		mode = mode + 'on';
+	}
+	else if (document.getElementById('mode_auto').checked){
+		mode = mode + 'auto';
+	}
+	
+	
+	for (let i = 0; i <= 167; i++) {
+		if (document.getElementById(i).bgColor === '#FFFFFF'){
+		programmation = programmation + '0';
+		}
+		else if (document.getElementById(i).bgColor === '#2196F3'){
+		programmation = programmation + '1';
+		}
+		else if (document.getElementById(i).bgColor === '#FFFF'){
+		programmation = programmation + '2';
+		}
+	}
+	
+	data = mode + programmation + '&random=' + Math.trunc(Math.random() * 1000000);
+	
+	if (document.getElementById('save_data').checked){
+		data = data + '&savedata';
+	}
+		
+	document.location.href = data;
+	
+	}
+	
+</script>
+
+</body>
+
+
+</html>
